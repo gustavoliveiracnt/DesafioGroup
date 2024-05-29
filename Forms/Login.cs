@@ -16,5 +16,10 @@ namespace Desafio_Group
         {
             InitializeComponent();
         }
+
+        private void ShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            senha.PasswordChar = ShowPass.Checked ? '\0' : '*';
+        }
     }
 }

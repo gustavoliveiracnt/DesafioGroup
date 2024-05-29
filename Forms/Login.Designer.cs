@@ -34,7 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.User = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.senha = new System.Windows.Forms.TextBox();
             this.ShowPass = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.EsqueciSenha = new System.Windows.Forms.LinkLabel();
@@ -95,15 +95,15 @@
             this.Password.TabIndex = 5;
             this.Password.Text = "Senha:";
             // 
-            // textBox2
+            // senha
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox2.Location = new System.Drawing.Point(153, 286);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(174, 22);
-            this.textBox2.TabIndex = 4;
+            this.senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.senha.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.senha.Location = new System.Drawing.Point(153, 286);
+            this.senha.Name = "senha";
+            this.senha.PasswordChar = '*';
+            this.senha.Size = new System.Drawing.Size(174, 22);
+            this.senha.TabIndex = 4;
             // 
             // ShowPass
             // 
@@ -116,6 +116,7 @@
             this.ShowPass.TabIndex = 6;
             this.ShowPass.Text = "Mostrar senha";
             this.ShowPass.UseVisualStyleBackColor = true;
+            this.ShowPass.CheckedChanged += new System.EventHandler(this.ShowPass_CheckedChanged);
             // 
             // button1
             // 
@@ -162,7 +163,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ShowPass);
             this.Controls.Add(this.Password);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.senha);
             this.Controls.Add(this.User);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -185,7 +186,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label User;
         private System.Windows.Forms.Label Password;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox senha;
         private System.Windows.Forms.CheckBox ShowPass;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.LinkLabel EsqueciSenha;
