@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Desafio_Group.Forms;
 namespace Desafio_Group
 {
     internal static class Program
@@ -16,7 +16,7 @@ namespace Desafio_Group
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Cadastro());
         }
     }
 }

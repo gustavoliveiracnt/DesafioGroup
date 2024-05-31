@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desafio_Group.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,12 @@ namespace Desafio_Group
         private void ShowPass_CheckedChanged(object sender, EventArgs e)
         {
             senha.PasswordChar = ShowPass.Checked ? '\0' : '*';
+        }
+
+        private void EsqueciSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            EsqueciSenhaForm esqueciSenha = new EsqueciSenhaForm();
+            esqueciSenha.ShowDialog();
         }
     }
 }
