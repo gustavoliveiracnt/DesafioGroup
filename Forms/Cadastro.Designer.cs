@@ -182,6 +182,7 @@
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.Lavender;
+            this.textBox4.Enabled = false;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.textBox4.Location = new System.Drawing.Point(162, 291);
@@ -211,6 +212,7 @@
             this.CadastrarButton.TabIndex = 22;
             this.CadastrarButton.Text = "CADASTRAR";
             this.CadastrarButton.UseVisualStyleBackColor = false;
+            this.CadastrarButton.Click += new System.EventHandler(this.CadastrarButton_Click);
             // 
             // button1
             // 

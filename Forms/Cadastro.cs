@@ -26,5 +26,18 @@ namespace Desafio_Group.Forms
         {
             DocumentTxt.Mask = TipoCPF.Checked ? @"000\.000\.000\-00" : @"00\.000\.000\/0000\-00";
         }
+
+        private void CadastrarButton_Click(object sender, EventArgs e)
+        {
+            Validacao validar = new Validacao();
+            DocumentTxt.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string documento = DocumentTxt.Text;
+
+            bool validado = TipoCNPJ.Checked ? validar.validarCNPJ(documento) : validar.validarCPF(documento);
+
+            string mensagem = validado ? "Documento válido" : "Documento inválido";
+
+            MessageBox.Show(mensagem);
+        }
     }
 }
