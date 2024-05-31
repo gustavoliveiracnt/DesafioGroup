@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Desafio_Group.Validacoes
 {
     internal class Validacao
     {
-
+        public bool validarCEP(string cep)
+        {
+            var regex = new Regex(@"^\d{5}-\d{3}");
+            return regex.IsMatch(cep);
+        }
         public bool validarCNPJ(string cnpj)
         {
             int[] multip1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };

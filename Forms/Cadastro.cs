@@ -31,11 +31,13 @@ namespace Desafio_Group.Forms
         {
             Validacao validar = new Validacao();
             DocumentTxt.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            string documento = DocumentTxt.Text;
+    
 
-            bool validado = TipoCNPJ.Checked ? validar.validarCNPJ(documento) : validar.validarCPF(documento);
+            bool validado = TipoCNPJ.Checked ? validar.validarCNPJ(DocumentTxt.Text.ToString()) : validar.validarCPF(DocumentTxt.Text.ToString());
 
             string mensagem = validado ? "Documento válido" : "Documento inválido";
+
+            mensagem = validar.validarCEP(CEPMasked.Text.ToString()) ? "CEP válido" : "CEP inválido";
 
             MessageBox.Show(mensagem);
         }
