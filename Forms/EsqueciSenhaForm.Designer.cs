@@ -42,7 +42,7 @@
             this.Password.AutoSize = true;
             this.Password.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.Password.Location = new System.Drawing.Point(43, 195);
+            this.Password.Location = new System.Drawing.Point(42, 195);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(94, 26);
             this.Password.TabIndex = 9;
@@ -52,7 +52,7 @@
             // 
             this.senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.senha.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.senha.Location = new System.Drawing.Point(48, 227);
+            this.senha.Location = new System.Drawing.Point(47, 227);
             this.senha.Name = "senha";
             this.senha.PasswordChar = '*';
             this.senha.Size = new System.Drawing.Size(174, 22);
@@ -63,7 +63,7 @@
             this.User.AutoSize = true;
             this.User.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.User.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.User.Location = new System.Drawing.Point(43, 130);
+            this.User.Location = new System.Drawing.Point(42, 130);
             this.User.Name = "User";
             this.User.Size = new System.Drawing.Size(110, 26);
             this.User.TabIndex = 7;
@@ -73,7 +73,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox1.Location = new System.Drawing.Point(48, 162);
+            this.textBox1.Location = new System.Drawing.Point(47, 162);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(346, 22);
             this.textBox1.TabIndex = 6;
