@@ -9,6 +9,24 @@ namespace Desafio_Group.Validacoes
 {
     internal class Validacao
     {
+        public bool validarEmail(string email)
+        {
+
+            if (string.IsNullOrEmpty(email))
+            {
+                return false;
+            }
+            try
+            {
+                return Regex.IsMatch(email,
+                        @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                        RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public bool validarCEP(string cep)
         {
             var regex = new Regex(@"^\d{5}-\d{3}");
