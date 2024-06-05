@@ -62,11 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DesafioGroupDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DesafioGroupDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CadastroForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,17 +111,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DesafioGroupDataSet.xsc">
-      <DependentUpon>DesafioGroupDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DesafioGroupDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DesafioGroupDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DesafioGroupDataSet.xss">
-      <DependentUpon>DesafioGroupDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,15 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\group.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DesafioGroup.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DesafioGroup_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>DesafioGroup.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

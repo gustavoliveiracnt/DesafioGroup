@@ -43,7 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.enderecoTxt = new System.Windows.Forms.TextBox();
             this.ImagemLogin = new System.Windows.Forms.PictureBox();
-            this.CadastrarButton = new System.Windows.Forms.Button();
+            this.cadastrarButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.alterarButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
@@ -51,18 +51,11 @@
             this.documentTxt = new System.Windows.Forms.MaskedTextBox();
             this.CEPMasked = new System.Windows.Forms.MaskedTextBox();
             this.telefoneTxt = new System.Windows.Forms.MaskedTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.desafioGroupDataSet = new Desafio_Group.DesafioGroupDataSet();
             this.tabelaCadastroBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabelaCadastroTableAdapter = new Desafio_Group.DesafioGroupDataSetTableAdapters.TabelaCadastroTableAdapter();
-            this.documentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enderecoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buscartxt = new System.Windows.Forms.TextBox();
+            this.buscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.desafioGroupDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCadastroBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,18 +206,18 @@
             this.ImagemLogin.TabIndex = 21;
             this.ImagemLogin.TabStop = false;
             // 
-            // CadastrarButton
+            // cadastrarButton
             // 
-            this.CadastrarButton.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.CadastrarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CadastrarButton.ForeColor = System.Drawing.Color.Azure;
-            this.CadastrarButton.Location = new System.Drawing.Point(26, 334);
-            this.CadastrarButton.Name = "CadastrarButton";
-            this.CadastrarButton.Size = new System.Drawing.Size(310, 33);
-            this.CadastrarButton.TabIndex = 22;
-            this.CadastrarButton.Text = "CADASTRAR";
-            this.CadastrarButton.UseVisualStyleBackColor = false;
-            this.CadastrarButton.Click += new System.EventHandler(this.CadastrarButton_Click);
+            this.cadastrarButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.cadastrarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastrarButton.ForeColor = System.Drawing.Color.Azure;
+            this.cadastrarButton.Location = new System.Drawing.Point(26, 334);
+            this.cadastrarButton.Name = "cadastrarButton";
+            this.cadastrarButton.Size = new System.Drawing.Size(310, 33);
+            this.cadastrarButton.TabIndex = 22;
+            this.cadastrarButton.Text = "CADASTRAR";
+            this.cadastrarButton.UseVisualStyleBackColor = false;
+            this.cadastrarButton.Click += new System.EventHandler(this.cadastrarButton_Click);
             // 
             // deleteButton
             // 
@@ -309,65 +302,39 @@
             this.telefoneTxt.TabIndex = 29;
             this.telefoneTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // dataGridView1
+            // label3
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.documentoDataGridViewTextBoxColumn,
-            this.nomeDataGridViewTextBoxColumn,
-            this.telefoneDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
-            this.enderecoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tabelaCadastroBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(360, 105);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(300, 229);
-            this.dataGridView1.TabIndex = 30;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label3.Location = new System.Drawing.Point(354, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 20);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Buscar:";
             // 
-            // desafioGroupDataSet
+            // buscartxt
             // 
-            this.desafioGroupDataSet.DataSetName = "DesafioGroupDataSet";
-            this.desafioGroupDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.buscartxt.BackColor = System.Drawing.Color.Lavender;
+            this.buscartxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscartxt.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.buscartxt.Location = new System.Drawing.Point(358, 82);
+            this.buscartxt.Name = "buscartxt";
+            this.buscartxt.Size = new System.Drawing.Size(234, 22);
+            this.buscartxt.TabIndex = 30;
             // 
-            // tabelaCadastroBindingSource
+            // buscar
             // 
-            this.tabelaCadastroBindingSource.DataMember = "TabelaCadastro";
-            this.tabelaCadastroBindingSource.DataSource = this.desafioGroupDataSet;
-            // 
-            // tabelaCadastroTableAdapter
-            // 
-            this.tabelaCadastroTableAdapter.ClearBeforeFill = true;
-            // 
-            // documentoDataGridViewTextBoxColumn
-            // 
-            this.documentoDataGridViewTextBoxColumn.DataPropertyName = "documento";
-            this.documentoDataGridViewTextBoxColumn.HeaderText = "documento";
-            this.documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            // 
-            // telefoneDataGridViewTextBoxColumn
-            // 
-            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
-            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
-            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // enderecoDataGridViewTextBoxColumn
-            // 
-            this.enderecoDataGridViewTextBoxColumn.DataPropertyName = "endereco";
-            this.enderecoDataGridViewTextBoxColumn.HeaderText = "endereco";
-            this.enderecoDataGridViewTextBoxColumn.Name = "enderecoDataGridViewTextBoxColumn";
+            this.buscar.BackColor = System.Drawing.Color.OliveDrab;
+            this.buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscar.ForeColor = System.Drawing.Color.Azure;
+            this.buscar.Location = new System.Drawing.Point(598, 82);
+            this.buscar.Name = "buscar";
+            this.buscar.Size = new System.Drawing.Size(70, 22);
+            this.buscar.TabIndex = 32;
+            this.buscar.Text = "BUSCAR";
+            this.buscar.UseVisualStyleBackColor = false;
+            this.buscar.Click += new System.EventHandler(this.buscar_Click);
             // 
             // CadastroForm
             // 
@@ -375,14 +342,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(680, 437);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buscar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.buscartxt);
             this.Controls.Add(this.telefoneTxt);
             this.Controls.Add(this.CEPMasked);
             this.Controls.Add(this.documentTxt);
             this.Controls.Add(this.viewButton);
             this.Controls.Add(this.alterarButton);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.CadastrarButton);
+            this.Controls.Add(this.cadastrarButton);
             this.Controls.Add(this.ImagemLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.enderecoTxt);
@@ -403,8 +372,6 @@
             this.Text = "Cadastro";
             this.Load += new System.EventHandler(this.Cadastro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.desafioGroupDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCadastroBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -426,7 +393,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox enderecoTxt;
         private System.Windows.Forms.PictureBox ImagemLogin;
-        private System.Windows.Forms.Button CadastrarButton;
+        private System.Windows.Forms.Button cadastrarButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button alterarButton;
         private System.Windows.Forms.Button viewButton;
@@ -434,14 +401,14 @@
         private System.Windows.Forms.MaskedTextBox documentTxt;
         private System.Windows.Forms.MaskedTextBox CEPMasked;
         private System.Windows.Forms.MaskedTextBox telefoneTxt;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private DesafioGroupDataSet desafioGroupDataSet;
         private System.Windows.Forms.BindingSource tabelaCadastroBindingSource;
-        private DesafioGroupDataSetTableAdapters.TabelaCadastroTableAdapter tabelaCadastroTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn enderecoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox buscartxt;
+        private System.Windows.Forms.Button buscar;
     }
 }
