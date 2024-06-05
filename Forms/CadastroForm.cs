@@ -34,39 +34,37 @@ namespace Desafio_Group.Forms
 
         private void cadastrarButton_Click(object sender, EventArgs e)
         {
-
-            //verificar campos vazios
-            verificarCampos();
-
-            //validar campos
-            validarCampos();
-
-            try
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
+            if (validarCampos() && verificarCampos()) {
+                try
                 {
-                    sqlConnection.Open();
-
-                    stringSql = "INSERT INTO Cadastro (nome, documento, telefone, email, endereco) VALUES (@nome, @documento, @telefone, @email, @endereco)";
-                    using (SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection))
+                    using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
                     {
+                        sqlConnection.Open();
 
-                        sqlCommand.Parameters.AddWithValue("@nome", nomeTxt.Text.ToString());
-                        sqlCommand.Parameters.AddWithValue("@documento", documentTxt.Text.ToString());
-                        sqlCommand.Parameters.AddWithValue("@telefone", telefoneTxt.Text.ToString());
-                        sqlCommand.Parameters.AddWithValue("@email", emailTxt.Text.ToString());
-                        sqlCommand.Parameters.AddWithValue("@endereco", enderecoTxt.Text.ToString());
+                        stringSql = "INSERT INTO Cadastro (nome, documento, telefone, email, endereco) VALUES (@nome, @documento, @telefone, @email, @endereco)";
+                        using (SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection))
+                        {
 
-                        sqlCommand.ExecuteNonQuery();
+                            sqlCommand.Parameters.AddWithValue("@nome", nomeTxt.Text.ToString());
+                            sqlCommand.Parameters.AddWithValue("@documento", documentTxt.Text.ToString());
+                            sqlCommand.Parameters.AddWithValue("@telefone", telefoneTxt.Text.ToString());
+                            sqlCommand.Parameters.AddWithValue("@email", emailTxt.Text.ToString());
+                            sqlCommand.Parameters.AddWithValue("@endereco", enderecoTxt.Text.ToString());
+
+                            sqlCommand.ExecuteNonQuery();
+                        }
+
+                            MessageBox.Show("Cadastro realizado.", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     }
-
-                    MessageBox.Show("Cadastro realizado.", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro: " + ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro: " + ex.Message);
-            }
+            else
+                MessageBox.Show("Impossível realizar cadastro, há algum campo não preenchido.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             limparCampos();
         }
 
@@ -143,42 +141,44 @@ namespace Desafio_Group.Forms
             enderecoTxt.Clear();
         }
 
-        private void verificarCampos()
+        private bool verificarCampos()
         {
 
             if (string.IsNullOrEmpty(nomeTxt.Text))
             {
                 MessageBox.Show("Por favor, informe seu nome.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                nomeTxt.Focus(); return;
+                nomeTxt.Focus(); return false;
             }
             if (!TipoCPF.Checked && !TipoCNPJ.Checked)
             {
                 MessageBox.Show("Por favor, marque campo 'TIPO' com uma das opções.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
             if (!documentTxt.MaskFull)
             {
                 MessageBox.Show("Por favor, informe número do documento.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                documentTxt.Focus(); return;
+                documentTxt.Focus(); return false;
             }
             if (!telefoneTxt.MaskFull)
             {
                 MessageBox.Show("Por favor, informe número de telefone.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                telefoneTxt.Focus(); return;
+                telefoneTxt.Focus(); return false;
             }
             if (string.IsNullOrEmpty(emailTxt.Text))
             {
                 MessageBox.Show("Por favor, informe seu e-mail.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                emailTxt.Focus(); return;
+                emailTxt.Focus(); return false;
             }
             if (!CEPMasked.MaskFull)
             {
                 MessageBox.Show("Por favor, informe seu CEP.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                CEPMasked.Focus(); return;
+                CEPMasked.Focus(); return false;
             }
+
+            return true;
         }
 
-        private void validarCampos()
+        private bool validarCampos()
         {
             Validacao validacao = new Validacao();
             string mensagem;
@@ -190,7 +190,7 @@ namespace Desafio_Group.Forms
                 if (mensagem != null)
                 {
                     MessageBox.Show($"{mensagem}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    documentTxt.Focus(); return;
+                    documentTxt.Focus(); return false;
                 }
             }
             else if (TipoCNPJ.Checked)
@@ -200,21 +200,23 @@ namespace Desafio_Group.Forms
                 if (mensagem != null)
                 {
                     MessageBox.Show($"{mensagem}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    documentTxt.Focus(); return;
+                    documentTxt.Focus(); return false;
                 }
             }
 
             if (!validacao.validarEmail(emailTxt.Text.ToString()))
             {
                 MessageBox.Show("E-mail inválido, informe novamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                emailTxt.Focus(); return;
+                emailTxt.Focus(); return false;
             }
 
             if (!validacao.validarCEP(CEPMasked.Text.ToString()))
             {
                 MessageBox.Show("CEP inválido, informe novamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                emailTxt.Focus(); return;
+                emailTxt.Focus(); return false;
             }
+
+            return true;
         }
 
         private void buscar_Click(object sender, EventArgs e)
