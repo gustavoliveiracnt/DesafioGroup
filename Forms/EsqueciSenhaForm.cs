@@ -29,9 +29,12 @@ namespace Desafio_Group.Forms
         private void enviarTokenButton_Click(object sender, EventArgs e)
         {
             string from, pass, mensagem;
+
             Random random = new Random();
             randomCode = random.Next(999999).ToString();
+
             MailMessage message = new MailMessage();
+
             to = recuperacaoEmail.Text.ToString();
             from = "groupsoftwarecad@gmail.com";
             pass = "group!123";
@@ -40,11 +43,13 @@ namespace Desafio_Group.Forms
             message.From = new MailAddress(from);
             message.Body = mensagem;
             message.Subject = "Código Para Redefinir Senha";
+
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
             smtp.EnableSsl = true;
             smtp.Port = 587;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Credentials = new NetworkCredential(from,pass);
+
             try
             {
                 smtp.Send(message);
@@ -58,7 +63,7 @@ namespace Desafio_Group.Forms
 
         private void verificarButton_Click(object sender, EventArgs e)
         {
-            if (randomCode == tokenTxt.ToString())
+            if (randomCode == tokenTxt.Text.ToString())
             {
                 RedefinirSenhaForm redefinir = new RedefinirSenhaForm();
                 this.Hide();

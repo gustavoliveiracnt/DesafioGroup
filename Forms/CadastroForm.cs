@@ -153,6 +153,8 @@ namespace Desafio_Group.Forms
             CEPMasked.Clear();
             enderecoTxt.Clear();
             buscartxt.Clear();
+            TipoCPF.Checked = false;
+            TipoCNPJ.Checked = false;
             CPFBusca.Checked = false;
             CNPJBusca.Checked = false;
             nomeBusca.Checked = false;
@@ -460,24 +462,6 @@ namespace Desafio_Group.Forms
             }
             limparCampos();
         }
-
-        /*private void GetDadosDocumento(string documento)
-        {
-            try
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
-                {
-                    sqlConnection.Open();
-
-                    string stringSql = "SELECT * FROM Cadastro WHERE documento = @documento";
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro: " + ex.Message);
-            }
-        }*/
 
     }
 }
