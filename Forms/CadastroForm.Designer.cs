@@ -46,17 +46,22 @@
             this.cadastrarButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.alterarButton = new System.Windows.Forms.Button();
-            this.viewButton = new System.Windows.Forms.Button();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.documentTxt = new System.Windows.Forms.MaskedTextBox();
             this.CEPMasked = new System.Windows.Forms.MaskedTextBox();
             this.telefoneTxt = new System.Windows.Forms.MaskedTextBox();
             this.tabelaCadastroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.buscartxt = new System.Windows.Forms.TextBox();
             this.buscar = new System.Windows.Forms.Button();
+            this.buscartxt = new System.Windows.Forms.MaskedTextBox();
+            this.CNPJBusca = new System.Windows.Forms.RadioButton();
+            this.CPFBusca = new System.Windows.Forms.RadioButton();
+            this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.limparButton = new System.Windows.Forms.Button();
+            this.nomeBusca = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCadastroBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // DocumentoLabel
@@ -64,7 +69,7 @@
             this.DocumentoLabel.AutoSize = true;
             this.DocumentoLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DocumentoLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.DocumentoLabel.Location = new System.Drawing.Point(158, 122);
+            this.DocumentoLabel.Location = new System.Drawing.Point(158, 133);
             this.DocumentoLabel.Name = "DocumentoLabel";
             this.DocumentoLabel.Size = new System.Drawing.Size(118, 20);
             this.DocumentoLabel.TabIndex = 9;
@@ -75,7 +80,7 @@
             this.NomeLabel.AutoSize = true;
             this.NomeLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NomeLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.NomeLabel.Location = new System.Drawing.Point(22, 59);
+            this.NomeLabel.Location = new System.Drawing.Point(22, 70);
             this.NomeLabel.Name = "NomeLabel";
             this.NomeLabel.Size = new System.Drawing.Size(75, 20);
             this.NomeLabel.TabIndex = 7;
@@ -86,7 +91,7 @@
             this.nomeTxt.BackColor = System.Drawing.Color.Lavender;
             this.nomeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nomeTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.nomeTxt.Location = new System.Drawing.Point(26, 82);
+            this.nomeTxt.Location = new System.Drawing.Point(26, 93);
             this.nomeTxt.Name = "nomeTxt";
             this.nomeTxt.Size = new System.Drawing.Size(310, 22);
             this.nomeTxt.TabIndex = 6;
@@ -96,7 +101,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.Location = new System.Drawing.Point(22, 122);
+            this.label1.Location = new System.Drawing.Point(22, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 20);
             this.label1.TabIndex = 10;
@@ -108,7 +113,7 @@
             this.TipoCPF.BackColor = System.Drawing.Color.Transparent;
             this.TipoCPF.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TipoCPF.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.TipoCPF.Location = new System.Drawing.Point(26, 145);
+            this.TipoCPF.Location = new System.Drawing.Point(26, 156);
             this.TipoCPF.Name = "TipoCPF";
             this.TipoCPF.Size = new System.Drawing.Size(104, 19);
             this.TipoCPF.TabIndex = 11;
@@ -123,7 +128,7 @@
             this.TipoCNPJ.BackColor = System.Drawing.Color.Transparent;
             this.TipoCNPJ.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TipoCNPJ.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.TipoCNPJ.Location = new System.Drawing.Point(26, 161);
+            this.TipoCNPJ.Location = new System.Drawing.Point(26, 172);
             this.TipoCNPJ.Name = "TipoCNPJ";
             this.TipoCNPJ.Size = new System.Drawing.Size(126, 19);
             this.TipoCNPJ.TabIndex = 12;
@@ -136,7 +141,7 @@
             this.TelefoneLabel.AutoSize = true;
             this.TelefoneLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TelefoneLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.TelefoneLabel.Location = new System.Drawing.Point(22, 204);
+            this.TelefoneLabel.Location = new System.Drawing.Point(22, 215);
             this.TelefoneLabel.Name = "TelefoneLabel";
             this.TelefoneLabel.Size = new System.Drawing.Size(96, 20);
             this.TelefoneLabel.TabIndex = 14;
@@ -147,7 +152,7 @@
             this.EmailLabel.AutoSize = true;
             this.EmailLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.EmailLabel.Location = new System.Drawing.Point(159, 204);
+            this.EmailLabel.Location = new System.Drawing.Point(159, 215);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(75, 20);
             this.EmailLabel.TabIndex = 16;
@@ -158,7 +163,7 @@
             this.emailTxt.BackColor = System.Drawing.Color.Lavender;
             this.emailTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.emailTxt.Location = new System.Drawing.Point(162, 227);
+            this.emailTxt.Location = new System.Drawing.Point(162, 238);
             this.emailTxt.Name = "emailTxt";
             this.emailTxt.Size = new System.Drawing.Size(174, 22);
             this.emailTxt.TabIndex = 15;
@@ -168,7 +173,7 @@
             this.EnderecoLabel.AutoSize = true;
             this.EnderecoLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EnderecoLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.EnderecoLabel.Location = new System.Drawing.Point(23, 268);
+            this.EnderecoLabel.Location = new System.Drawing.Point(23, 279);
             this.EnderecoLabel.Name = "EnderecoLabel";
             this.EnderecoLabel.Size = new System.Drawing.Size(51, 20);
             this.EnderecoLabel.TabIndex = 18;
@@ -179,7 +184,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(158, 268);
+            this.label2.Location = new System.Drawing.Point(158, 279);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 20);
             this.label2.TabIndex = 20;
@@ -190,7 +195,7 @@
             this.enderecoTxt.BackColor = System.Drawing.Color.Lavender;
             this.enderecoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enderecoTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.enderecoTxt.Location = new System.Drawing.Point(162, 291);
+            this.enderecoTxt.Location = new System.Drawing.Point(162, 302);
             this.enderecoTxt.Name = "enderecoTxt";
             this.enderecoTxt.Size = new System.Drawing.Size(174, 22);
             this.enderecoTxt.TabIndex = 19;
@@ -211,7 +216,7 @@
             this.cadastrarButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.cadastrarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastrarButton.ForeColor = System.Drawing.Color.Azure;
-            this.cadastrarButton.Location = new System.Drawing.Point(26, 334);
+            this.cadastrarButton.Location = new System.Drawing.Point(26, 345);
             this.cadastrarButton.Name = "cadastrarButton";
             this.cadastrarButton.Size = new System.Drawing.Size(310, 33);
             this.cadastrarButton.TabIndex = 22;
@@ -224,9 +229,9 @@
             this.deleteButton.BackColor = System.Drawing.Color.DarkRed;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.Azure;
-            this.deleteButton.Location = new System.Drawing.Point(26, 376);
+            this.deleteButton.Location = new System.Drawing.Point(26, 387);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(104, 22);
+            this.deleteButton.Size = new System.Drawing.Size(92, 22);
             this.deleteButton.TabIndex = 23;
             this.deleteButton.Text = "DELETAR";
             this.deleteButton.UseVisualStyleBackColor = false;
@@ -237,25 +242,13 @@
             this.alterarButton.BackColor = System.Drawing.Color.DarkCyan;
             this.alterarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alterarButton.ForeColor = System.Drawing.Color.Azure;
-            this.alterarButton.Location = new System.Drawing.Point(136, 376);
+            this.alterarButton.Location = new System.Drawing.Point(222, 387);
             this.alterarButton.Name = "alterarButton";
-            this.alterarButton.Size = new System.Drawing.Size(81, 22);
+            this.alterarButton.Size = new System.Drawing.Size(114, 22);
             this.alterarButton.TabIndex = 24;
             this.alterarButton.Text = "ALTERAR";
             this.alterarButton.UseVisualStyleBackColor = false;
             this.alterarButton.Click += new System.EventHandler(this.alterarButton_Click);
-            // 
-            // viewButton
-            // 
-            this.viewButton.BackColor = System.Drawing.Color.Goldenrod;
-            this.viewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewButton.ForeColor = System.Drawing.Color.Azure;
-            this.viewButton.Location = new System.Drawing.Point(223, 376);
-            this.viewButton.Name = "viewButton";
-            this.viewButton.Size = new System.Drawing.Size(113, 22);
-            this.viewButton.TabIndex = 25;
-            this.viewButton.Text = "VISUZALIZAR";
-            this.viewButton.UseVisualStyleBackColor = false;
             // 
             // directorySearcher1
             // 
@@ -266,10 +259,11 @@
             // documentTxt
             // 
             this.documentTxt.BackColor = System.Drawing.Color.Lavender;
+            this.documentTxt.Culture = new System.Globalization.CultureInfo("");
             this.documentTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.documentTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.documentTxt.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.documentTxt.Location = new System.Drawing.Point(162, 160);
+            this.documentTxt.Location = new System.Drawing.Point(162, 171);
             this.documentTxt.Mask = "000.000.000-00";
             this.documentTxt.Name = "documentTxt";
             this.documentTxt.Size = new System.Drawing.Size(174, 22);
@@ -282,7 +276,7 @@
             this.CEPMasked.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.CEPMasked.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.CEPMasked.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.CEPMasked.Location = new System.Drawing.Point(26, 291);
+            this.CEPMasked.Location = new System.Drawing.Point(26, 302);
             this.CEPMasked.Mask = "00000-000";
             this.CEPMasked.Name = "CEPMasked";
             this.CEPMasked.Size = new System.Drawing.Size(126, 22);
@@ -295,7 +289,7 @@
             this.telefoneTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.telefoneTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.telefoneTxt.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.telefoneTxt.Location = new System.Drawing.Point(27, 227);
+            this.telefoneTxt.Location = new System.Drawing.Point(27, 238);
             this.telefoneTxt.Mask = "(99) 00000-0000";
             this.telefoneTxt.Name = "telefoneTxt";
             this.telefoneTxt.Size = new System.Drawing.Size(125, 22);
@@ -307,34 +301,105 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label3.Location = new System.Drawing.Point(354, 59);
+            this.label3.Location = new System.Drawing.Point(354, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 31;
             this.label3.Text = "Buscar:";
-            // 
-            // buscartxt
-            // 
-            this.buscartxt.BackColor = System.Drawing.Color.Lavender;
-            this.buscartxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buscartxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.buscartxt.Location = new System.Drawing.Point(358, 82);
-            this.buscartxt.Name = "buscartxt";
-            this.buscartxt.Size = new System.Drawing.Size(234, 22);
-            this.buscartxt.TabIndex = 30;
             // 
             // buscar
             // 
             this.buscar.BackColor = System.Drawing.Color.OliveDrab;
             this.buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buscar.ForeColor = System.Drawing.Color.Azure;
-            this.buscar.Location = new System.Drawing.Point(598, 82);
+            this.buscar.Location = new System.Drawing.Point(513, 107);
             this.buscar.Name = "buscar";
-            this.buscar.Size = new System.Drawing.Size(70, 22);
+            this.buscar.Size = new System.Drawing.Size(72, 22);
             this.buscar.TabIndex = 32;
             this.buscar.Text = "BUSCAR";
             this.buscar.UseVisualStyleBackColor = false;
             this.buscar.Click += new System.EventHandler(this.buscar_Click);
+            // 
+            // buscartxt
+            // 
+            this.buscartxt.BackColor = System.Drawing.Color.Lavender;
+            this.buscartxt.Culture = new System.Globalization.CultureInfo("");
+            this.buscartxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buscartxt.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.buscartxt.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.buscartxt.Location = new System.Drawing.Point(513, 79);
+            this.buscartxt.Mask = "000.000.000-00";
+            this.buscartxt.Name = "buscartxt";
+            this.buscartxt.Size = new System.Drawing.Size(147, 22);
+            this.buscartxt.TabIndex = 35;
+            this.buscartxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CNPJBusca
+            // 
+            this.CNPJBusca.AutoSize = true;
+            this.CNPJBusca.BackColor = System.Drawing.Color.Transparent;
+            this.CNPJBusca.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CNPJBusca.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.CNPJBusca.Location = new System.Drawing.Point(358, 107);
+            this.CNPJBusca.Name = "CNPJBusca";
+            this.CNPJBusca.Size = new System.Drawing.Size(126, 19);
+            this.CNPJBusca.TabIndex = 34;
+            this.CNPJBusca.TabStop = true;
+            this.CNPJBusca.Text = "Jurídica (CNPJ)";
+            this.CNPJBusca.UseVisualStyleBackColor = false;
+            // 
+            // CPFBusca
+            // 
+            this.CPFBusca.AutoSize = true;
+            this.CPFBusca.BackColor = System.Drawing.Color.Transparent;
+            this.CPFBusca.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CPFBusca.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.CPFBusca.Location = new System.Drawing.Point(358, 91);
+            this.CPFBusca.Name = "CPFBusca";
+            this.CPFBusca.Size = new System.Drawing.Size(104, 19);
+            this.CPFBusca.TabIndex = 33;
+            this.CPFBusca.TabStop = true;
+            this.CPFBusca.Text = "Física (CPF)";
+            this.CPFBusca.UseVisualStyleBackColor = false;
+            this.CPFBusca.CheckedChanged += new System.EventHandler(this.CPFBusca_CheckedChanged);
+            // 
+            // dataGrid
+            // 
+            this.dataGrid.AllowUserToAddRows = false;
+            this.dataGrid.AllowUserToDeleteRows = false;
+            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid.Location = new System.Drawing.Point(358, 156);
+            this.dataGrid.Name = "dataGrid";
+            this.dataGrid.ReadOnly = true;
+            this.dataGrid.Size = new System.Drawing.Size(302, 253);
+            this.dataGrid.TabIndex = 36;
+            // 
+            // limparButton
+            // 
+            this.limparButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.limparButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.limparButton.ForeColor = System.Drawing.Color.Azure;
+            this.limparButton.Location = new System.Drawing.Point(588, 107);
+            this.limparButton.Name = "limparButton";
+            this.limparButton.Size = new System.Drawing.Size(72, 22);
+            this.limparButton.TabIndex = 37;
+            this.limparButton.Text = "LIMPAR";
+            this.limparButton.UseVisualStyleBackColor = false;
+            this.limparButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // nomeBusca
+            // 
+            this.nomeBusca.AutoSize = true;
+            this.nomeBusca.BackColor = System.Drawing.Color.Transparent;
+            this.nomeBusca.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomeBusca.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.nomeBusca.Location = new System.Drawing.Point(358, 124);
+            this.nomeBusca.Name = "nomeBusca";
+            this.nomeBusca.Size = new System.Drawing.Size(62, 19);
+            this.nomeBusca.TabIndex = 38;
+            this.nomeBusca.TabStop = true;
+            this.nomeBusca.Text = "Nome";
+            this.nomeBusca.UseVisualStyleBackColor = false;
             // 
             // CadastroForm
             // 
@@ -342,13 +407,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(680, 437);
+            this.Controls.Add(this.nomeBusca);
+            this.Controls.Add(this.limparButton);
+            this.Controls.Add(this.dataGrid);
+            this.Controls.Add(this.buscartxt);
+            this.Controls.Add(this.CNPJBusca);
+            this.Controls.Add(this.CPFBusca);
             this.Controls.Add(this.buscar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.buscartxt);
             this.Controls.Add(this.telefoneTxt);
             this.Controls.Add(this.CEPMasked);
             this.Controls.Add(this.documentTxt);
-            this.Controls.Add(this.viewButton);
             this.Controls.Add(this.alterarButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.cadastrarButton);
@@ -373,6 +442,7 @@
             this.Load += new System.EventHandler(this.Cadastro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCadastroBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,7 +466,6 @@
         private System.Windows.Forms.Button cadastrarButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button alterarButton;
-        private System.Windows.Forms.Button viewButton;
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private System.Windows.Forms.MaskedTextBox documentTxt;
         private System.Windows.Forms.MaskedTextBox CEPMasked;
@@ -408,7 +477,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn enderecoDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox buscartxt;
         private System.Windows.Forms.Button buscar;
+        private System.Windows.Forms.MaskedTextBox buscartxt;
+        private System.Windows.Forms.RadioButton CNPJBusca;
+        private System.Windows.Forms.RadioButton CPFBusca;
+        private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.Button limparButton;
+        private System.Windows.Forms.RadioButton nomeBusca;
     }
 }

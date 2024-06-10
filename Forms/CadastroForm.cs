@@ -9,7 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Desafio_Group.Validacoes;
+using System.Globalization;
+using System.Diagnostics.Eventing.Reader;
+using System.Xml.Linq;
 namespace Desafio_Group.Forms
+
 {
     public partial class CadastroForm : Form
     {
@@ -25,6 +29,8 @@ namespace Desafio_Group.Forms
         private void Cadastro_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'desafioGroupDataSet.TabelaCadastro'. Você pode movê-la ou removê-la conforme necessário.
+
+            CarregarGrid();
         }
 
         private void TipoCPF_CheckedChanged(object sender, EventArgs e)
@@ -34,7 +40,8 @@ namespace Desafio_Group.Forms
 
         private void cadastrarButton_Click(object sender, EventArgs e)
         {
-            if (validarCampos() && verificarCampos()) {
+            if (validarCampos() && verificarCampos())
+            {
                 try
                 {
                     using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
@@ -54,7 +61,7 @@ namespace Desafio_Group.Forms
                             sqlCommand.ExecuteNonQuery();
                         }
 
-                            MessageBox.Show("Cadastro realizado.", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Cadastro realizado.", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
@@ -66,9 +73,9 @@ namespace Desafio_Group.Forms
             else
                 MessageBox.Show("Impossível realizar cadastro, há algum campo não preenchido.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             limparCampos();
+            CarregarGrid();
         }
 
-        //parei aqui
         private void alterarButton_Click(object sender, EventArgs e)
         {
             try
@@ -78,6 +85,7 @@ namespace Desafio_Group.Forms
                     sqlConnection.Open();
 
                     stringSql = "UPDATE Cadastro set nome=@nome, telefone=@telefone, email=@email, endereco=@endereco where documento=@documento";
+
                     using (SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection))
                     {
 
@@ -98,21 +106,24 @@ namespace Desafio_Group.Forms
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
             limparCampos();
+            CarregarGrid();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\gustavo.henrique\\OneDrive - Group Software Ltda\\Documentos\\DesafioGroup.mdf\";Integrated Security=True;Connect Timeout=30"))
+                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
                 {
                     sqlConnection.Open();
-
-                    using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM TabelaCadastro where documento=@documento", sqlConnection))
+                    stringSql = "DELETE FROM Cadastro where documento=@documento";
+                    using (SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection))
                     {
+
                         sqlCommand.Parameters.AddWithValue("@documento", documentTxt.Text.ToString());
 
                         int rowsAffected = sqlCommand.ExecuteNonQuery();
+
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Deletado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -130,6 +141,7 @@ namespace Desafio_Group.Forms
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
             limparCampos();
+            CarregarGrid();
         }
 
         private void limparCampos()
@@ -138,15 +150,20 @@ namespace Desafio_Group.Forms
             documentTxt.Clear();
             telefoneTxt.Clear();
             emailTxt.Clear();
+            CEPMasked.Clear();
             enderecoTxt.Clear();
+            buscartxt.Clear();
+            CPFBusca.Checked = false;
+            CNPJBusca.Checked = false;
+            nomeBusca.Checked = false;
         }
-
+        
         private bool verificarCampos()
         {
 
             if (string.IsNullOrEmpty(nomeTxt.Text))
             {
-                MessageBox.Show("Por favor, informe seu nome.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, informe nome para cadastro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 nomeTxt.Focus(); return false;
             }
             if (!TipoCPF.Checked && !TipoCNPJ.Checked)
@@ -219,38 +236,222 @@ namespace Desafio_Group.Forms
             return true;
         }
 
-        private void buscar_Click(object sender, EventArgs e)
+        private void buscar_Documento()
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(buscartxt.Text))
+                {
+                    MessageBox.Show("Campo precisa estar preenchido para realizar busca.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    buscartxt.Focus();
+                    return;
+                }
+
                 using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
                 {
                     sqlConnection.Open();
 
-                    stringSql = "select * from Cadastro where documento = @documento";
-                    SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection);
+                    stringSql = "SELECT * FROM Cadastro WHERE documento = @documento";
 
-                    if (buscartxt.Text == string.Empty)
+                    using (SqlDataAdapter da = new SqlDataAdapter(stringSql, sqlConnection))
                     {
-                        MessageBox.Show("Campo precisa estar preenchido para realizar busca.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        emailTxt.Focus(); return;
-                    }
-                    
-                    SqlDataReader dr = sqlCommand.ExecuteReader();
+                        da.SelectCommand.Parameters.AddWithValue("@documento", buscartxt.Text);
 
-                    if(dr.HasRows == false)
+                        using (DataTable dt = new DataTable())
+                        {
+                            da.Fill(dt);
+                            dataGrid.DataSource = dt;
+
+                            if (dt.Rows.Count == 0)
+                            {
+                                MessageBox.Show("Não há nenhum cadastro na tabela.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                buscartxt.Focus();
+                                return;
+                            }
+                            else
+                            {
+                                using (SqlCommand command = new SqlCommand(stringSql, sqlConnection))
+                                {
+                                    command.Parameters.AddWithValue("@documento", buscartxt.Text);
+
+                                    using (SqlDataReader dr = command.ExecuteReader())
+                                    {
+                                        if (dr.HasRows)
+                                        {
+                                            if (dr.Read())
+                                            {
+                                                nomeTxt.Text = dr["nome"].ToString();
+                                                documentTxt.Text = dr["documento"].ToString();
+                                                telefoneTxt.Text = dr["telefone"].ToString();
+                                                emailTxt.Text = dr["email"].ToString();
+                                                enderecoTxt.Text = dr["endereco"].ToString();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }
+
+        private void buscar_Nome()
+        {
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(buscartxt.Text))
+                {
+                    MessageBox.Show("Campo precisa estar preenchido para realizar busca.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    buscartxt.Focus();
+                    return;
+                }
+
+                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
+                {
+                    sqlConnection.Open();
+
+                    stringSql = "SELECT * FROM Cadastro WHERE nome = @nome";
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(stringSql, sqlConnection))
                     {
-                        MessageBox.Show("Não há nenhum cadastro na tabela.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        emailTxt.Focus(); return;
+                        da.SelectCommand.Parameters.AddWithValue("@nome", buscartxt.Text);
+
+                        using (DataTable dt = new DataTable())
+                        {
+                            da.Fill(dt);
+                            dataGrid.DataSource = dt;
+
+                            if (dt.Rows.Count == 0)
+                            {
+                                MessageBox.Show("Não há nenhum cadastro na tabela.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                buscartxt.Focus();
+                                return;
+                            }
+                            else
+                            {
+                                using (SqlCommand command = new SqlCommand(stringSql, sqlConnection))
+                                {
+                                    command.Parameters.AddWithValue("@nome", buscartxt.Text);
+
+                                    using (SqlDataReader dr = command.ExecuteReader())
+                                    {
+                                        if (dr.HasRows)
+                                        {
+                                            if (dr.Read())
+                                            {
+                                                nomeTxt.Text = dr["nome"].ToString();
+                                                documentTxt.Text = dr["documento"].ToString();
+                                                telefoneTxt.Text = dr["telefone"].ToString();
+                                                emailTxt.Text = dr["email"].ToString();
+                                                enderecoTxt.Text = dr["endereco"].ToString();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }
 
-                    nomeTxt.Text = Convert.ToString(dr["nome"]);
-                    documentTxt.Text = Convert.ToString(dr["documento"]);
-                    telefoneTxt.Text = Convert.ToString(dr["telefone"]);
-                    emailTxt.Text = Convert.ToString(dr["email"]);
-                    enderecoTxt.Text = Convert.ToString(dr["endereco"]);
+        private void buscar_Click(object sender, EventArgs e)
+        {
+            if (!nomeBusca.Checked)
+            {
+               buscar_Documento();
+            }
+            else
+            {
+                buscar_Nome();
+            }
+        }
 
+        private void CPFBusca_CheckedChanged(object sender, EventArgs e)
+        {
 
+            if (CPFBusca.Checked)
+            {
+                buscartxt.Mask = @"000\.000\.000\-00";
+            }
+            else if (CNPJBusca.Checked)
+            {
+                buscartxt.Mask = @"00\.000\.000\/0000\-00";
+            }
+            else
+            {
+                buscartxt.Mask = "";
+            }
+
+        }
+
+        private void CarregarGrid()
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(stringConexao))
+                {
+                    conexao.Open();
+                    stringSql = "SELECT * FROM dbo.Cadastro";
+                    using (SqlDataAdapter da = new SqlDataAdapter(stringSql, conexao))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            da.Fill(dt);
+                            dataGrid.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(buscartxt.Text))
+                {
+                    MessageBox.Show("Campo precisa estar preenchido para realizar busca.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    buscartxt.Focus();
+                    return;
+                }
+
+                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
+                {
+                    sqlConnection.Open();
+
+                    string stringSql = "SELECT * FROM Cadastro";
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(stringSql, sqlConnection))
+                    {
+
+                        using (DataTable dt = new DataTable())
+                        {
+                            da.Fill(dt);
+                            dataGrid.DataSource = dt;
+
+                            if (dt.Rows.Count == 0)
+                            {
+                                MessageBox.Show("Não há nenhum cadastro na tabela.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                buscartxt.Focus();
+                                return;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -258,7 +459,25 @@ namespace Desafio_Group.Forms
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
             limparCampos();
-
         }
+
+        /*private void GetDadosDocumento(string documento)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
+                {
+                    sqlConnection.Open();
+
+                    string stringSql = "SELECT * FROM Cadastro WHERE documento = @documento";
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }*/
+
     }
 }
