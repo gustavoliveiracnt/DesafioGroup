@@ -14,9 +14,13 @@ namespace Desafio_Group
 {
     public partial class LoginForm : Form
     {
+        private Validacao Validar { get; set; }
+        public CadastroForm Cadastro  { get; set; }
         public LoginForm()
         {
             InitializeComponent();
+            Validar = new Validacao();
+            Cadastro = new CadastroForm();
         }
 
         private void ShowPass_CheckedChanged(object sender, EventArgs e)
@@ -27,17 +31,16 @@ namespace Desafio_Group
         private void EsqueciSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             EsqueciSenhaForm esqueciSenha = new EsqueciSenhaForm();
-            esqueciSenha.ShowDialog();
+            esqueciSenha.Show();
+            this.Hide();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            Validacao validar = new Validacao();
-            if (validar.verificarLogin(usuarioTxt.Text.ToString(), senhaTxt.Text.ToString()))
+            if (Validar.verificarLogin(usuarioTxt.Text.ToString(), senhaTxt.Text.ToString()))
             {
-                CadastroForm cadastro = new CadastroForm();
-                cadastro.ShowDialog();
-                this.Close();
+                Cadastro.Show();
+                this.Hide();
             }
             else
             {
@@ -45,6 +48,11 @@ namespace Desafio_Group
                 usuarioTxt.Clear();
                 senhaTxt.Clear();
             }
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

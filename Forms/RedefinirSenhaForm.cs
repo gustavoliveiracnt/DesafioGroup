@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desafio_Group.Funcionalidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,23 +13,31 @@ namespace Desafio_Group.Forms
 {
     public partial class RedefinirSenhaForm : Form
     {
-        public RedefinirSenhaForm()
+        public string Usuario { get; set; }
+        public LoginForm _loginForm { get; set; }
+        public RedefinirSenhaForm(string usuario)
         {
             InitializeComponent();
+            this.Usuario = usuario;
+            _loginForm = new LoginForm();
         }
 
         private void voltarButton_Click(object sender, EventArgs e)
         {
             this.Close();
-
-            //realizar restante de validações no banco de dados
         }
 
         private void verificarButton_Click(object sender, EventArgs e)
         {
             if(novaSenha.Text == confirmacaoSenha.Text)
             {
-                MessageBox.Show("Senhas iguais. Alteração pode ser realizada.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BancoDados db = new BancoDados();
+
+                if(db.AlterarSenhaUsuario(Usuario, confirmacaoSenha.Text.ToString()))
+                {
+                    _loginForm.Show();
+                    this.Close();
+                }
             }
             else
             {
@@ -43,5 +52,6 @@ namespace Desafio_Group.Forms
             novaSenha.PasswordChar = mostrar_novaSenha.Checked ? '\0' : '*';
             confirmacaoSenha.PasswordChar = mostrar_novaSenha.Checked ? '\0' : '*';
         }
+
     }
 }

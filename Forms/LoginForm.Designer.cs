@@ -39,6 +39,7 @@
             this.EsqueciSenha = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.ImagemLogin = new System.Windows.Forms.PictureBox();
+            this.Close = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(148, 120);
+            this.label1.Location = new System.Drawing.Point(148, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(361, 29);
             this.label1.TabIndex = 1;
@@ -57,7 +58,7 @@
             // 
             this.usuarioTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usuarioTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.usuarioTxt.Location = new System.Drawing.Point(153, 213);
+            this.usuarioTxt.Location = new System.Drawing.Point(153, 234);
             this.usuarioTxt.Name = "usuarioTxt";
             this.usuarioTxt.Size = new System.Drawing.Size(346, 22);
             this.usuarioTxt.TabIndex = 2;
@@ -67,7 +68,7 @@
             this.User.AutoSize = true;
             this.User.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.User.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.User.Location = new System.Drawing.Point(148, 181);
+            this.User.Location = new System.Drawing.Point(148, 202);
             this.User.Name = "User";
             this.User.Size = new System.Drawing.Size(110, 26);
             this.User.TabIndex = 3;
@@ -78,7 +79,7 @@
             this.Password.AutoSize = true;
             this.Password.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.Password.Location = new System.Drawing.Point(148, 246);
+            this.Password.Location = new System.Drawing.Point(148, 267);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(94, 26);
             this.Password.TabIndex = 5;
@@ -88,7 +89,7 @@
             // 
             this.senhaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.senhaTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.senhaTxt.Location = new System.Drawing.Point(153, 278);
+            this.senhaTxt.Location = new System.Drawing.Point(153, 299);
             this.senhaTxt.Name = "senhaTxt";
             this.senhaTxt.PasswordChar = '*';
             this.senhaTxt.Size = new System.Drawing.Size(174, 22);
@@ -99,7 +100,7 @@
             this.ShowPass.AutoSize = true;
             this.ShowPass.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowPass.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.ShowPass.Location = new System.Drawing.Point(342, 274);
+            this.ShowPass.Location = new System.Drawing.Point(342, 295);
             this.ShowPass.Name = "ShowPass";
             this.ShowPass.Size = new System.Drawing.Size(148, 23);
             this.ShowPass.TabIndex = 6;
@@ -112,7 +113,7 @@
             this.loginButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginButton.ForeColor = System.Drawing.Color.Azure;
-            this.loginButton.Location = new System.Drawing.Point(153, 315);
+            this.loginButton.Location = new System.Drawing.Point(153, 336);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(346, 33);
             this.loginButton.TabIndex = 7;
@@ -124,7 +125,7 @@
             // 
             this.EsqueciSenha.AutoSize = true;
             this.EsqueciSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.EsqueciSenha.Location = new System.Drawing.Point(272, 354);
+            this.EsqueciSenha.Location = new System.Drawing.Point(272, 375);
             this.EsqueciSenha.Name = "EsqueciSenha";
             this.EsqueciSenha.Size = new System.Drawing.Size(107, 16);
             this.EsqueciSenha.TabIndex = 8;
@@ -137,7 +138,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(169, 149);
+            this.label2.Location = new System.Drawing.Point(169, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(312, 15);
             this.label2.TabIndex = 9;
@@ -147,19 +148,33 @@
             // 
             this.ImagemLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ImagemLogin.Image = global::Desafio_Group.Properties.Resources.group;
-            this.ImagemLogin.Location = new System.Drawing.Point(12, 22);
+            this.ImagemLogin.Location = new System.Drawing.Point(12, 43);
             this.ImagemLogin.Name = "ImagemLogin";
             this.ImagemLogin.Size = new System.Drawing.Size(610, 85);
             this.ImagemLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImagemLogin.TabIndex = 0;
             this.ImagemLogin.TabStop = false;
             // 
+            // Close
+            // 
+            this.Close.BackColor = System.Drawing.Color.Firebrick;
+            this.Close.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Close.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Close.Location = new System.Drawing.Point(571, 12);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(51, 23);
+            this.Close.TabIndex = 41;
+            this.Close.Text = "SAIR";
+            this.Close.UseVisualStyleBackColor = false;
+            this.Close.Click += new System.EventHandler(this.Close_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(634, 411);
+            this.ClientSize = new System.Drawing.Size(634, 420);
+            this.Controls.Add(this.Close);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.EsqueciSenha);
             this.Controls.Add(this.loginButton);
@@ -170,7 +185,7 @@
             this.Controls.Add(this.usuarioTxt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ImagemLogin);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -193,6 +208,7 @@
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.LinkLabel EsqueciSenha;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Close;
     }
 }
 

@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="Funcionalidades\BancoDados.cs" />
     <Compile Include="Funcionalidades\CEP.cs" />
+    <Compile Include="Funcionalidades\Email.cs" />
     <Compile Include="Funcionalidades\Hash.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

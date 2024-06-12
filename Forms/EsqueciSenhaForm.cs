@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desafio_Group.Funcionalidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,66 +15,59 @@ namespace Desafio_Group.Forms
 {
     public partial class EsqueciSenhaForm : Form
     {
-        string randomCode;
-        public static string to;
+        private string randomCode;
+        public LoginForm LoginForm { get; set; }
+        private BancoDados _bancoDados { get; }
+        private Email _email { get; }
         public EsqueciSenhaForm()
         {
             InitializeComponent();
+            _bancoDados = new BancoDados();
+            _email = new Email();
+            LoginForm = new LoginForm();
         }
 
         private void voltarButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            LoginForm.Show();
         }
 
         private void enviarTokenButton_Click(object sender, EventArgs e)
         {
-            string from, pass, mensagem;
-
-            Random random = new Random();
-            randomCode = random.Next(999999).ToString();
-
-            MailMessage message = new MailMessage();
-
-            to = recuperacaoEmail.Text.ToString();
-            from = "groupsoftwarecad@gmail.com";
-            pass = "group!123";
-            mensagem = $"Seu código para redefinição: {randomCode}";
-            message.To.Add(to);
-            message.From = new MailAddress(from);
-            message.Body = mensagem;
-            message.Subject = "Código Para Redefinir Senha";
-
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            smtp.EnableSsl = true;
-            smtp.Port = 587;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new NetworkCredential(from,pass);
-
-            try
-            {
-                smtp.Send(message);
-                MessageBox.Show("Código enviado com sucesso.");
+            if (_bancoDados.VerificarEmailBanco(recuperacaoEmail.Text.ToString())){
+                try
+                {
+                    randomCode = _email.EnviarEmail(recuperacaoEmail.Text.ToString());
+                }
+                catch (Exception except)
+                {
+                    MessageBox.Show("Ocorreu um erro ao tentar enviar o código para o e-mail: " +except.Message, "Erro ao enviar token", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception except)
+            else
             {
-                MessageBox.Show(except.Message);
+                MessageBox.Show("Usuário não encontrado em nosso banco. ", "Erro ao encontrar e-mail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void verificarButton_Click(object sender, EventArgs e)
         {
-            if (randomCode == tokenTxt.Text.ToString())
+            if (randomCode != null && randomCode == tokenTxt.Text.ToString())
             {
-                RedefinirSenhaForm redefinir = new RedefinirSenhaForm();
-                this.Hide();
+                RedefinirSenhaForm redefinir = new RedefinirSenhaForm(recuperacaoEmail.Text.ToString());
                 redefinir.Show();
-
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Código incorreto. ");
+                MessageBox.Show("Token incorreto. Favor verificar sua caixa de entrada. ", "Verifique Caixa de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

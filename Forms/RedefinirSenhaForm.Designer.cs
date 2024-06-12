@@ -44,7 +44,7 @@
             // 
             this.ImagemLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ImagemLogin.Image = global::Desafio_Group.Properties.Resources.group;
-            this.ImagemLogin.Location = new System.Drawing.Point(12, 24);
+            this.ImagemLogin.Location = new System.Drawing.Point(12, 43);
             this.ImagemLogin.Name = "ImagemLogin";
             this.ImagemLogin.Size = new System.Drawing.Size(510, 74);
             this.ImagemLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -56,7 +56,7 @@
             this.verificarButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.verificarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.verificarButton.ForeColor = System.Drawing.Color.Azure;
-            this.verificarButton.Location = new System.Drawing.Point(219, 238);
+            this.verificarButton.Location = new System.Drawing.Point(219, 257);
             this.verificarButton.Name = "verificarButton";
             this.verificarButton.Size = new System.Drawing.Size(292, 33);
             this.verificarButton.TabIndex = 35;
@@ -69,7 +69,7 @@
             this.voltarButton.BackColor = System.Drawing.Color.Maroon;
             this.voltarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.voltarButton.ForeColor = System.Drawing.Color.Azure;
-            this.voltarButton.Location = new System.Drawing.Point(17, 238);
+            this.voltarButton.Location = new System.Drawing.Point(17, 257);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(170, 33);
             this.voltarButton.TabIndex = 32;
@@ -82,7 +82,7 @@
             this.newPassword.AutoSize = true;
             this.newPassword.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newPassword.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.newPassword.Location = new System.Drawing.Point(12, 121);
+            this.newPassword.Location = new System.Drawing.Point(12, 140);
             this.newPassword.Name = "newPassword";
             this.newPassword.Size = new System.Drawing.Size(175, 29);
             this.newPassword.TabIndex = 30;
@@ -92,7 +92,7 @@
             // 
             this.novaSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.novaSenha.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.novaSenha.Location = new System.Drawing.Point(17, 162);
+            this.novaSenha.Location = new System.Drawing.Point(17, 181);
             this.novaSenha.Name = "novaSenha";
             this.novaSenha.PasswordChar = '*';
             this.novaSenha.Size = new System.Drawing.Size(170, 22);
@@ -105,7 +105,7 @@
             this.mostrar_novaSenha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.mostrar_novaSenha.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.mostrar_novaSenha.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mostrar_novaSenha.Location = new System.Drawing.Point(17, 195);
+            this.mostrar_novaSenha.Location = new System.Drawing.Point(17, 214);
             this.mostrar_novaSenha.Name = "mostrar_novaSenha";
             this.mostrar_novaSenha.Size = new System.Drawing.Size(157, 23);
             this.mostrar_novaSenha.TabIndex = 36;
@@ -117,7 +117,7 @@
             // 
             this.confirmacaoSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmacaoSenha.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.confirmacaoSenha.Location = new System.Drawing.Point(219, 162);
+            this.confirmacaoSenha.Location = new System.Drawing.Point(219, 181);
             this.confirmacaoSenha.Name = "confirmacaoSenha";
             this.confirmacaoSenha.PasswordChar = '*';
             this.confirmacaoSenha.Size = new System.Drawing.Size(170, 22);
@@ -128,7 +128,7 @@
             this.confirmPassword.AutoSize = true;
             this.confirmPassword.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmPassword.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.confirmPassword.Location = new System.Drawing.Point(214, 121);
+            this.confirmPassword.Location = new System.Drawing.Point(214, 140);
             this.confirmPassword.Name = "confirmPassword";
             this.confirmPassword.Size = new System.Drawing.Size(297, 29);
             this.confirmPassword.TabIndex = 34;
@@ -139,7 +139,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(534, 301);
+            this.ClientSize = new System.Drawing.Size(534, 320);
             this.Controls.Add(this.mostrar_novaSenha);
             this.Controls.Add(this.verificarButton);
             this.Controls.Add(this.confirmPassword);
@@ -148,8 +148,10 @@
             this.Controls.Add(this.newPassword);
             this.Controls.Add(this.novaSenha);
             this.Controls.Add(this.ImagemLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RedefinirSenhaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nova Senha";
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).EndInit();
             this.ResumeLayout(false);

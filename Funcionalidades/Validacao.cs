@@ -5,14 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Desafio_Group.Validacoes
 {
     internal class Validacao
     {
+        private BancoDados dbvalidar { get; set; }
+        public Validacao()
+        {
+            dbvalidar = new BancoDados();
+        }
         public bool validarEmail(string email)
         {
-
             if (string.IsNullOrEmpty(email))
             {
                 return false;
@@ -25,14 +30,17 @@ namespace Desafio_Group.Validacoes
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Ocorreu um erro na validação do e-mail: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
+
         public bool validarCEP(string cep)
         {
             var regex = new Regex(@"^\d{8}");
             return regex.IsMatch(cep);
         }
+
         public bool validarCNPJ(string cnpj)
         {
             int[] multip1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -130,12 +138,7 @@ namespace Desafio_Group.Validacoes
 
         public bool verificarLogin(string login, string senha)
         {
-            BancoDados dbvalidar = new BancoDados();
-            if(dbvalidar.VerificarLoginBanco(login, senha))
-            {
-                return true;
-            }
-            return false;
+            return dbvalidar.VerificarLoginBanco(login, senha);
         }
     }
 }

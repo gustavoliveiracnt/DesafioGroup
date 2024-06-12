@@ -8,14 +8,23 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Xml.Linq;
 
 namespace Desafio_Group.Funcionalidades
 {
     internal class BancoDados
     {
         private SqlConnection conexao = null;
+
         private string stringConexao = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=GroupDF;Data Source=GROUP-NOTE02229\SQLEXPRESS2019";
+
         private string stringSql = string.Empty;
+
+        private Hash hash = new Hash(SHA256.Create());
+
+        public Hash Hash { get {  return hash; } set { hash = value; } }
+
 
         public void Deletar(string documento)
         {
@@ -45,25 +54,31 @@ namespace Desafio_Group.Funcionalidades
 
         public void Cadastrar(string nome, string documento, string telefone, string email, string endereco)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
+            try
             {
-                sqlConnection.Open();
-
-                stringSql = "INSERT INTO Cadastro (nome, documento, telefone, email, endereco) VALUES (@nome, @documento, @telefone, @email, @endereco)";
-                using (SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection))
+                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
                 {
+                    sqlConnection.Open();
 
-                    sqlCommand.Parameters.AddWithValue("@nome", nome);
-                    sqlCommand.Parameters.AddWithValue("@documento", documento);
-                    sqlCommand.Parameters.AddWithValue("@telefone", telefone);
-                    sqlCommand.Parameters.AddWithValue("@email", email);
-                    sqlCommand.Parameters.AddWithValue("@endereco", endereco);
+                    stringSql = "INSERT INTO Cadastro (nome, documento, telefone, email, endereco) VALUES (@nome, @documento, @telefone, @email, @endereco)";
+                    using (SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@nome", nome);
+                        sqlCommand.Parameters.AddWithValue("@documento", documento);
+                        sqlCommand.Parameters.AddWithValue("@telefone", telefone);
+                        sqlCommand.Parameters.AddWithValue("@email", email);
+                        sqlCommand.Parameters.AddWithValue("@endereco", endereco);
 
-                    sqlCommand.ExecuteNonQuery();
+                        sqlCommand.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Cadastro realizado.", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
-
-                MessageBox.Show("Cadastro realizado.", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao cadastrar pessoa: " + ex.Message, "Erro ao cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -291,7 +306,6 @@ namespace Desafio_Group.Funcionalidades
             try
             {
                 SqlDataReader dr;
-                Hash criptografar = new Hash(HMACSHA512.Create());
 
                 using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
                 {
@@ -301,7 +315,7 @@ namespace Desafio_Group.Funcionalidades
                     using (SqlCommand cmd = new SqlCommand(stringSql, sqlConnection))
                     {
                         cmd.Parameters.AddWithValue("@login", LoginBanco);
-                        cmd.Parameters.AddWithValue("@senha", senhaBanco);
+                        cmd.Parameters.AddWithValue("@senha", Hash.Criptografar(senhaBanco));
                         dr = cmd.ExecuteReader();
                         if (dr.HasRows)
                         {
@@ -314,12 +328,72 @@ namespace Desafio_Group.Funcionalidades
                     }
                 }
             }
-            catch(Exception exept)
+            catch (Exception exept)
             {
-                MessageBox.Show("Ocorreu um erro com acesso ao banco de dados: " +exept.Message, "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Ocorreu um erro com acesso ao banco de dados: " + exept.Message, "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return false;
+        }
+
+        public bool VerificarEmailBanco(string email)
+        {
+            try
+            {
+                SqlDataReader dr;
+
+                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
+                {
+                    sqlConnection.Open();
+                    stringSql = "select * from Acesso where usuario=@login";
+
+                    using (SqlCommand cmd = new SqlCommand(stringSql, sqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@login", email);
+                        dr = cmd.ExecuteReader();
+                        if (dr.HasRows)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception exept)
+            {
+                MessageBox.Show("Ocorreu um erro com acesso ao banco de dados: " + exept.Message, "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
+        }
+
+        public bool AlterarSenhaUsuario(string login, string senha)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(stringConexao))
+                {
+                    sqlConnection.Open();
+
+                    stringSql = "UPDATE Acesso set password=@senha where usuario=@login";
+
+                    using (SqlCommand sqlCommand = new SqlCommand(stringSql, sqlConnection))
+                    {
+
+                        sqlCommand.Parameters.AddWithValue("@senha", Hash.Criptografar(senha));
+                        sqlCommand.Parameters.AddWithValue("@login", login);
+
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Senha alterada com sucesso.", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                return true;
+            }
+            catch(Exception exept)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado: "+exept.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                return false;
+            }
+
         }
     }
 }

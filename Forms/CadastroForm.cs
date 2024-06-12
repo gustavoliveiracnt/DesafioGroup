@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Diagnostics.Eventing.Reader;
 using System.Xml.Linq;
 using Desafio_Group.Funcionalidades;
+using System.Security.Policy;
 namespace Desafio_Group.Forms
 
 {
@@ -270,5 +271,9 @@ namespace Desafio_Group.Forms
             }
         }
 
+        public void Close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
