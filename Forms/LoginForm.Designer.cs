@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.usuarioTxt = new System.Windows.Forms.TextBox();
             this.User = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.Label();
-            this.senha = new System.Windows.Forms.TextBox();
+            this.senhaTxt = new System.Windows.Forms.TextBox();
             this.ShowPass = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.loginButton = new System.Windows.Forms.Button();
             this.EsqueciSenha = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.ImagemLogin = new System.Windows.Forms.PictureBox();
@@ -53,14 +53,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Bem-vindos ao Group Cad!";
             // 
-            // textBox1
+            // usuarioTxt
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.textBox1.Location = new System.Drawing.Point(153, 213);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(346, 22);
-            this.textBox1.TabIndex = 2;
+            this.usuarioTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuarioTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.usuarioTxt.Location = new System.Drawing.Point(153, 213);
+            this.usuarioTxt.Name = "usuarioTxt";
+            this.usuarioTxt.Size = new System.Drawing.Size(346, 22);
+            this.usuarioTxt.TabIndex = 2;
             // 
             // User
             // 
@@ -84,15 +84,15 @@
             this.Password.TabIndex = 5;
             this.Password.Text = "Senha:";
             // 
-            // senha
+            // senhaTxt
             // 
-            this.senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.senha.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.senha.Location = new System.Drawing.Point(153, 278);
-            this.senha.Name = "senha";
-            this.senha.PasswordChar = '*';
-            this.senha.Size = new System.Drawing.Size(174, 22);
-            this.senha.TabIndex = 4;
+            this.senhaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.senhaTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.senhaTxt.Location = new System.Drawing.Point(153, 278);
+            this.senhaTxt.Name = "senhaTxt";
+            this.senhaTxt.PasswordChar = '*';
+            this.senhaTxt.Size = new System.Drawing.Size(174, 22);
+            this.senhaTxt.TabIndex = 4;
             // 
             // ShowPass
             // 
@@ -107,17 +107,18 @@
             this.ShowPass.UseVisualStyleBackColor = true;
             this.ShowPass.CheckedChanged += new System.EventHandler(this.ShowPass_CheckedChanged);
             // 
-            // button1
+            // loginButton
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Azure;
-            this.button1.Location = new System.Drawing.Point(153, 315);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(346, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "LOGIN";
-            this.button1.UseVisualStyleBackColor = false;
+            this.loginButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.ForeColor = System.Drawing.Color.Azure;
+            this.loginButton.Location = new System.Drawing.Point(153, 315);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(346, 33);
+            this.loginButton.TabIndex = 7;
+            this.loginButton.Text = "LOGIN";
+            this.loginButton.UseVisualStyleBackColor = false;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // EsqueciSenha
             // 
@@ -153,7 +154,7 @@
             this.ImagemLogin.TabIndex = 0;
             this.ImagemLogin.TabStop = false;
             // 
-            // Login
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,17 +162,17 @@
             this.ClientSize = new System.Drawing.Size(634, 411);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.EsqueciSenha);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.loginButton);
             this.Controls.Add(this.ShowPass);
             this.Controls.Add(this.Password);
-            this.Controls.Add(this.senha);
+            this.Controls.Add(this.senhaTxt);
             this.Controls.Add(this.User);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.usuarioTxt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ImagemLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Login";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).EndInit();
@@ -184,12 +185,12 @@
 
         private System.Windows.Forms.PictureBox ImagemLogin;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox usuarioTxt;
         private System.Windows.Forms.Label User;
         private System.Windows.Forms.Label Password;
-        private System.Windows.Forms.TextBox senha;
+        private System.Windows.Forms.TextBox senhaTxt;
         private System.Windows.Forms.CheckBox ShowPass;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.LinkLabel EsqueciSenha;
         private System.Windows.Forms.Label label2;
     }

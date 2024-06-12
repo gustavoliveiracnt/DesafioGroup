@@ -53,7 +53,7 @@
             // 
             // verificarButton
             // 
-            this.verificarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.verificarButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.verificarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.verificarButton.ForeColor = System.Drawing.Color.Azure;
             this.verificarButton.Location = new System.Drawing.Point(219, 238);

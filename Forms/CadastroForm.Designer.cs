@@ -59,6 +59,7 @@
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.limparButton = new System.Windows.Forms.Button();
             this.nomeBusca = new System.Windows.Forms.RadioButton();
+            this.buscarCEP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCadastroBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -184,7 +185,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(158, 279);
+            this.label2.Location = new System.Drawing.Point(22, 340);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 20);
             this.label2.TabIndex = 20;
@@ -195,9 +196,9 @@
             this.enderecoTxt.BackColor = System.Drawing.Color.Lavender;
             this.enderecoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enderecoTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.enderecoTxt.Location = new System.Drawing.Point(162, 302);
+            this.enderecoTxt.Location = new System.Drawing.Point(26, 363);
             this.enderecoTxt.Name = "enderecoTxt";
-            this.enderecoTxt.Size = new System.Drawing.Size(174, 22);
+            this.enderecoTxt.Size = new System.Drawing.Size(309, 22);
             this.enderecoTxt.TabIndex = 19;
             // 
             // ImagemLogin
@@ -216,7 +217,7 @@
             this.cadastrarButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.cadastrarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastrarButton.ForeColor = System.Drawing.Color.Azure;
-            this.cadastrarButton.Location = new System.Drawing.Point(26, 345);
+            this.cadastrarButton.Location = new System.Drawing.Point(27, 407);
             this.cadastrarButton.Name = "cadastrarButton";
             this.cadastrarButton.Size = new System.Drawing.Size(310, 33);
             this.cadastrarButton.TabIndex = 22;
@@ -229,9 +230,9 @@
             this.deleteButton.BackColor = System.Drawing.Color.DarkRed;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.Azure;
-            this.deleteButton.Location = new System.Drawing.Point(26, 387);
+            this.deleteButton.Location = new System.Drawing.Point(27, 449);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(92, 22);
+            this.deleteButton.Size = new System.Drawing.Size(151, 22);
             this.deleteButton.TabIndex = 23;
             this.deleteButton.Text = "DELETAR";
             this.deleteButton.UseVisualStyleBackColor = false;
@@ -242,9 +243,9 @@
             this.alterarButton.BackColor = System.Drawing.Color.DarkCyan;
             this.alterarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alterarButton.ForeColor = System.Drawing.Color.Azure;
-            this.alterarButton.Location = new System.Drawing.Point(222, 387);
+            this.alterarButton.Location = new System.Drawing.Point(184, 449);
             this.alterarButton.Name = "alterarButton";
-            this.alterarButton.Size = new System.Drawing.Size(114, 22);
+            this.alterarButton.Size = new System.Drawing.Size(153, 22);
             this.alterarButton.TabIndex = 24;
             this.alterarButton.Text = "ALTERAR";
             this.alterarButton.UseVisualStyleBackColor = false;
@@ -282,6 +283,7 @@
             this.CEPMasked.Size = new System.Drawing.Size(126, 22);
             this.CEPMasked.TabIndex = 28;
             this.CEPMasked.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CEPMasked.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             // 
             // telefoneTxt
             // 
@@ -371,7 +373,7 @@
             this.dataGrid.Location = new System.Drawing.Point(358, 156);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(302, 253);
+            this.dataGrid.Size = new System.Drawing.Size(302, 317);
             this.dataGrid.TabIndex = 36;
             // 
             // limparButton
@@ -385,7 +387,7 @@
             this.limparButton.TabIndex = 37;
             this.limparButton.Text = "LIMPAR";
             this.limparButton.UseVisualStyleBackColor = false;
-            this.limparButton.Click += new System.EventHandler(this.button1_Click);
+            this.limparButton.Click += new System.EventHandler(this.limparButton_Click);
             // 
             // nomeBusca
             // 
@@ -401,12 +403,26 @@
             this.nomeBusca.Text = "Nome";
             this.nomeBusca.UseVisualStyleBackColor = false;
             // 
+            // buscarCEP
+            // 
+            this.buscarCEP.BackColor = System.Drawing.Color.OliveDrab;
+            this.buscarCEP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscarCEP.ForeColor = System.Drawing.Color.Azure;
+            this.buscarCEP.Location = new System.Drawing.Point(162, 304);
+            this.buscarCEP.Name = "buscarCEP";
+            this.buscarCEP.Size = new System.Drawing.Size(173, 22);
+            this.buscarCEP.TabIndex = 39;
+            this.buscarCEP.Text = "BUSCAR CEP";
+            this.buscarCEP.UseVisualStyleBackColor = false;
+            this.buscarCEP.Click += new System.EventHandler(this.buscarCEP_Click);
+            // 
             // CadastroForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(680, 437);
+            this.ClientSize = new System.Drawing.Size(680, 492);
+            this.Controls.Add(this.buscarCEP);
             this.Controls.Add(this.nomeBusca);
             this.Controls.Add(this.limparButton);
             this.Controls.Add(this.dataGrid);
@@ -484,5 +500,6 @@
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.Button limparButton;
         private System.Windows.Forms.RadioButton nomeBusca;
+        private System.Windows.Forms.Button buscarCEP;
     }
 }

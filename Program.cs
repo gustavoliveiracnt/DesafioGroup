@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Desafio_Group.Forms;
+using Desafio_Group.Funcionalidades;
 namespace Desafio_Group
 {
     internal static class Program
@@ -16,7 +17,7 @@ namespace Desafio_Group
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CadastroForm());
+            Application.Run(new LoginForm());
         }
     }
 }

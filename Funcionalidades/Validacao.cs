@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desafio_Group.Funcionalidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace Desafio_Group.Validacoes
         }
         public bool validarCEP(string cep)
         {
-            var regex = new Regex(@"^\d{5}-\d{3}");
+            var regex = new Regex(@"^\d{8}");
             return regex.IsMatch(cep);
         }
         public bool validarCNPJ(string cnpj)
@@ -125,6 +126,16 @@ namespace Desafio_Group.Validacoes
             digito = digito + resto.ToString();
 
             return cpf.EndsWith(digito);
+        }
+
+        public bool verificarLogin(string login, string senha)
+        {
+            BancoDados dbvalidar = new BancoDados();
+            if(dbvalidar.VerificarLoginBanco(login, senha))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
