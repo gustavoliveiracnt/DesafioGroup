@@ -1,26 +1,28 @@
 ﻿using Desafio_Group.Funcionalidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desafio_Group.Forms
 {
     public partial class RedefinirSenhaForm : Form
     {
+        #region ATRIBUTOS
         public string Usuario { get; set; }
         public LoginForm _loginForm { get; set; }
+
+        #endregion
+
+        #region CONSTRUTOR
         public RedefinirSenhaForm(string usuario)
         {
             InitializeComponent();
             this.Usuario = usuario;
             _loginForm = new LoginForm();
         }
+
+        #endregion
+
+        #region MÉTODOS
 
         private void voltarButton_Click(object sender, EventArgs e)
         {
@@ -52,6 +54,8 @@ namespace Desafio_Group.Forms
             novaSenha.PasswordChar = mostrar_novaSenha.Checked ? '\0' : '*';
             confirmacaoSenha.PasswordChar = mostrar_novaSenha.Checked ? '\0' : '*';
         }
+
+        #endregion
 
     }
 }

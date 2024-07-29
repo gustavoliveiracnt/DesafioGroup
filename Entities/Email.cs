@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Desafio_Group.Funcionalidades
 {
     internal class Email
     {
-        public string EnviarEmail(string emailRemetente)
+        #region MÉTODOS
+
+        public string EnviarEmail(string emailRemetente, ref string tokenCode)
         {
-            string tokenCode;
             try
             {
                 using (SmtpClient smtp = new SmtpClient("smtp.outlook.com", 587))
@@ -37,18 +33,21 @@ namespace Desafio_Group.Funcionalidades
                         smtp.Send(email);
                     }
                 }
-                MessageBox.Show($"Token enviado para o e-mail {emailRemetente}. Favor verificar sua caixa de entrada.", "E-mail enviado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return tokenCode;
+                throw new Exception($"Token enviado para o e-mail {emailRemetente}. Favor verificar sua caixa de entrada.");
+                //MessageBox.Show(, "E-mail enviado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SmtpException ex)
             {
-                MessageBox.Show("Ocorreu um erro ao enviar e-mail: " + ex.Message, "Erro ao enviar e-mail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                throw new Exception($"Ocorreu um erro ao enviar e-mail:" + ex.Message);
+                //MessageBox.Show(", "Erro ao enviar e-mail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro inesperado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                throw new Exception("Ocorreu um erro inesperado: " + ex.Message);
+               //MessageBox.Show(, "Erro inesperado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            return string.Empty;
         }
+
+        #endregion
     }
 }

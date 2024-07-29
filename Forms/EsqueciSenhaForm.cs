@@ -1,24 +1,20 @@
 ﻿using Desafio_Group.Funcionalidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desafio_Group.Forms
 {
     public partial class EsqueciSenhaForm : Form
     {
+        #region ATRIBUTOS
         private string randomCode;
         public LoginForm LoginForm { get; set; }
         private BancoDados _bancoDados { get; }
         private Email _email { get; }
+
+        #endregion
+
+        #region CONSTRUTOR
         public EsqueciSenhaForm()
         {
             InitializeComponent();
@@ -27,6 +23,9 @@ namespace Desafio_Group.Forms
             LoginForm = new LoginForm();
         }
 
+        #endregion
+
+        #region MÉTODOS
         private void voltarButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -35,14 +34,14 @@ namespace Desafio_Group.Forms
 
         private void enviarTokenButton_Click(object sender, EventArgs e)
         {
-            if (_bancoDados.VerificarEmailBanco(recuperacaoEmail.Text.ToString())){
+            if (_bancoDados.VerificarEmailBanco(recuperacaoEmail.Text)){
                 try
                 {
-                    randomCode = _email.EnviarEmail(recuperacaoEmail.Text.ToString());
+                    _email.EnviarEmail(recuperacaoEmail.Text, ref randomCode);
                 }
                 catch (Exception except)
                 {
-                    MessageBox.Show("Ocorreu um erro ao tentar enviar o código para o e-mail: " +except.Message, "Erro ao enviar token", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(except.Message, "Importante!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -55,7 +54,7 @@ namespace Desafio_Group.Forms
         {
             if (randomCode != null && randomCode == tokenTxt.Text.ToString())
             {
-                RedefinirSenhaForm redefinir = new RedefinirSenhaForm(recuperacaoEmail.Text.ToString());
+                RedefinirSenhaForm redefinir = new RedefinirSenhaForm(recuperacaoEmail.Text);
                 redefinir.Show();
                 this.Hide();
             }
@@ -69,5 +68,6 @@ namespace Desafio_Group.Forms
         {
             Application.Exit();
         }
+        #endregion
     }
 }

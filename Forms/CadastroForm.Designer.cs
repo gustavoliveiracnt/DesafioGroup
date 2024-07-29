@@ -33,24 +33,19 @@
             this.DocumentoLabel = new System.Windows.Forms.Label();
             this.NomeLabel = new System.Windows.Forms.Label();
             this.nomeTxt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tpDocument = new System.Windows.Forms.Label();
             this.TipoCPF = new System.Windows.Forms.RadioButton();
             this.TipoCNPJ = new System.Windows.Forms.RadioButton();
             this.TelefoneLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.emailTxt = new System.Windows.Forms.TextBox();
-            this.EnderecoLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.enderecoTxt = new System.Windows.Forms.TextBox();
-            this.ImagemLogin = new System.Windows.Forms.PictureBox();
             this.cadastrarButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.alterarButton = new System.Windows.Forms.Button();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.documentTxt = new System.Windows.Forms.MaskedTextBox();
-            this.CEPMasked = new System.Windows.Forms.MaskedTextBox();
             this.telefoneTxt = new System.Windows.Forms.MaskedTextBox();
-            this.tabelaCadastroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.buscar = new System.Windows.Forms.Button();
             this.buscartxt = new System.Windows.Forms.MaskedTextBox();
@@ -59,11 +54,13 @@
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.limparButton = new System.Windows.Forms.Button();
             this.nomeBusca = new System.Windows.Forms.RadioButton();
-            this.buscarCEP = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
+            this.btnViewLocal = new System.Windows.Forms.Button();
+            this.ImagemLogin = new System.Windows.Forms.PictureBox();
+            this.tabelaCadastroBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCadastroBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // DocumentoLabel
@@ -95,19 +92,19 @@
             this.nomeTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.nomeTxt.Location = new System.Drawing.Point(26, 113);
             this.nomeTxt.Name = "nomeTxt";
-            this.nomeTxt.Size = new System.Drawing.Size(310, 22);
-            this.nomeTxt.TabIndex = 6;
+            this.nomeTxt.Size = new System.Drawing.Size(297, 22);
+            this.nomeTxt.TabIndex = 0;
             // 
-            // label1
+            // tpDocument
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.Location = new System.Drawing.Point(22, 153);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Tipo:";
+            this.tpDocument.AutoSize = true;
+            this.tpDocument.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tpDocument.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.tpDocument.Location = new System.Drawing.Point(22, 153);
+            this.tpDocument.Name = "tpDocument";
+            this.tpDocument.Size = new System.Drawing.Size(56, 20);
+            this.tpDocument.TabIndex = 10;
+            this.tpDocument.Text = "Tipo:";
             // 
             // TipoCPF
             // 
@@ -118,7 +115,7 @@
             this.TipoCPF.Location = new System.Drawing.Point(26, 176);
             this.TipoCPF.Name = "TipoCPF";
             this.TipoCPF.Size = new System.Drawing.Size(104, 19);
-            this.TipoCPF.TabIndex = 11;
+            this.TipoCPF.TabIndex = 1;
             this.TipoCPF.TabStop = true;
             this.TipoCPF.Text = "Física (CPF)";
             this.TipoCPF.UseVisualStyleBackColor = false;
@@ -133,7 +130,7 @@
             this.TipoCNPJ.Location = new System.Drawing.Point(26, 192);
             this.TipoCNPJ.Name = "TipoCNPJ";
             this.TipoCNPJ.Size = new System.Drawing.Size(126, 19);
-            this.TipoCNPJ.TabIndex = 12;
+            this.TipoCNPJ.TabIndex = 2;
             this.TipoCNPJ.TabStop = true;
             this.TipoCNPJ.Text = "Jurídica (CNPJ)";
             this.TipoCNPJ.UseVisualStyleBackColor = false;
@@ -167,26 +164,15 @@
             this.emailTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.emailTxt.Location = new System.Drawing.Point(162, 258);
             this.emailTxt.Name = "emailTxt";
-            this.emailTxt.Size = new System.Drawing.Size(174, 22);
-            this.emailTxt.TabIndex = 15;
-            // 
-            // EnderecoLabel
-            // 
-            this.EnderecoLabel.AutoSize = true;
-            this.EnderecoLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnderecoLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.EnderecoLabel.Location = new System.Drawing.Point(23, 299);
-            this.EnderecoLabel.Name = "EnderecoLabel";
-            this.EnderecoLabel.Size = new System.Drawing.Size(51, 20);
-            this.EnderecoLabel.TabIndex = 18;
-            this.EnderecoLabel.Text = "CEP:";
+            this.emailTxt.Size = new System.Drawing.Size(161, 22);
+            this.emailTxt.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(22, 360);
+            this.label2.Location = new System.Drawing.Point(23, 300);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 20);
             this.label2.TabIndex = 20;
@@ -197,60 +183,36 @@
             this.enderecoTxt.BackColor = System.Drawing.Color.Lavender;
             this.enderecoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enderecoTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.enderecoTxt.Location = new System.Drawing.Point(26, 383);
+            this.enderecoTxt.Location = new System.Drawing.Point(28, 323);
             this.enderecoTxt.Name = "enderecoTxt";
-            this.enderecoTxt.Size = new System.Drawing.Size(309, 22);
-            this.enderecoTxt.TabIndex = 19;
-            // 
-            // ImagemLogin
-            // 
-            this.ImagemLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ImagemLogin.Image = global::Desafio_Group.Properties.Resources.group;
-            this.ImagemLogin.Location = new System.Drawing.Point(12, 40);
-            this.ImagemLogin.Name = "ImagemLogin";
-            this.ImagemLogin.Size = new System.Drawing.Size(656, 37);
-            this.ImagemLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ImagemLogin.TabIndex = 21;
-            this.ImagemLogin.TabStop = false;
+            this.enderecoTxt.Size = new System.Drawing.Size(257, 22);
+            this.enderecoTxt.TabIndex = 8;
             // 
             // cadastrarButton
             // 
             this.cadastrarButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.cadastrarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastrarButton.ForeColor = System.Drawing.Color.Azure;
-            this.cadastrarButton.Location = new System.Drawing.Point(27, 427);
+            this.cadastrarButton.Location = new System.Drawing.Point(28, 367);
             this.cadastrarButton.Name = "cadastrarButton";
-            this.cadastrarButton.Size = new System.Drawing.Size(310, 33);
-            this.cadastrarButton.TabIndex = 22;
-            this.cadastrarButton.Text = "CADASTRAR";
+            this.cadastrarButton.Size = new System.Drawing.Size(137, 33);
+            this.cadastrarButton.TabIndex = 10;
+            this.cadastrarButton.Text = "SALVAR";
             this.cadastrarButton.UseVisualStyleBackColor = false;
-            this.cadastrarButton.Click += new System.EventHandler(this.cadastrarButton_Click);
+            this.cadastrarButton.Click += new System.EventHandler(this.salvarButton_Click);
             // 
             // deleteButton
             // 
             this.deleteButton.BackColor = System.Drawing.Color.DarkRed;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.Color.Azure;
-            this.deleteButton.Location = new System.Drawing.Point(27, 469);
+            this.deleteButton.Location = new System.Drawing.Point(186, 367);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(151, 22);
-            this.deleteButton.TabIndex = 23;
+            this.deleteButton.Size = new System.Drawing.Size(137, 33);
+            this.deleteButton.TabIndex = 11;
             this.deleteButton.Text = "DELETAR";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // alterarButton
-            // 
-            this.alterarButton.BackColor = System.Drawing.Color.DarkCyan;
-            this.alterarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alterarButton.ForeColor = System.Drawing.Color.Azure;
-            this.alterarButton.Location = new System.Drawing.Point(184, 469);
-            this.alterarButton.Name = "alterarButton";
-            this.alterarButton.Size = new System.Drawing.Size(153, 22);
-            this.alterarButton.TabIndex = 24;
-            this.alterarButton.Text = "ALTERAR";
-            this.alterarButton.UseVisualStyleBackColor = false;
-            this.alterarButton.Click += new System.EventHandler(this.alterarButton_Click);
             // 
             // directorySearcher1
             // 
@@ -268,23 +230,9 @@
             this.documentTxt.Location = new System.Drawing.Point(162, 191);
             this.documentTxt.Mask = "000.000.000-00";
             this.documentTxt.Name = "documentTxt";
-            this.documentTxt.Size = new System.Drawing.Size(174, 22);
-            this.documentTxt.TabIndex = 27;
+            this.documentTxt.Size = new System.Drawing.Size(161, 22);
+            this.documentTxt.TabIndex = 3;
             this.documentTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // CEPMasked
-            // 
-            this.CEPMasked.BackColor = System.Drawing.Color.Lavender;
-            this.CEPMasked.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.CEPMasked.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.CEPMasked.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.CEPMasked.Location = new System.Drawing.Point(26, 322);
-            this.CEPMasked.Mask = "00000-000";
-            this.CEPMasked.Name = "CEPMasked";
-            this.CEPMasked.Size = new System.Drawing.Size(126, 22);
-            this.CEPMasked.TabIndex = 28;
-            this.CEPMasked.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CEPMasked.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             // 
             // telefoneTxt
             // 
@@ -293,11 +241,12 @@
             this.telefoneTxt.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.telefoneTxt.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
             this.telefoneTxt.Location = new System.Drawing.Point(27, 258);
-            this.telefoneTxt.Mask = "(99) 00000-0000";
+            this.telefoneTxt.Mask = "(99) 99999-9999";
             this.telefoneTxt.Name = "telefoneTxt";
-            this.telefoneTxt.Size = new System.Drawing.Size(125, 22);
-            this.telefoneTxt.TabIndex = 29;
+            this.telefoneTxt.Size = new System.Drawing.Size(112, 22);
+            this.telefoneTxt.TabIndex = 4;
             this.telefoneTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.telefoneTxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // label3
             // 
@@ -318,7 +267,7 @@
             this.buscar.Location = new System.Drawing.Point(513, 127);
             this.buscar.Name = "buscar";
             this.buscar.Size = new System.Drawing.Size(72, 22);
-            this.buscar.TabIndex = 32;
+            this.buscar.TabIndex = 16;
             this.buscar.Text = "BUSCAR";
             this.buscar.UseVisualStyleBackColor = false;
             this.buscar.Click += new System.EventHandler(this.buscar_Click);
@@ -334,7 +283,7 @@
             this.buscartxt.Mask = "000.000.000-00";
             this.buscartxt.Name = "buscartxt";
             this.buscartxt.Size = new System.Drawing.Size(147, 22);
-            this.buscartxt.TabIndex = 35;
+            this.buscartxt.TabIndex = 15;
             this.buscartxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CNPJBusca
@@ -346,7 +295,7 @@
             this.CNPJBusca.Location = new System.Drawing.Point(358, 127);
             this.CNPJBusca.Name = "CNPJBusca";
             this.CNPJBusca.Size = new System.Drawing.Size(126, 19);
-            this.CNPJBusca.TabIndex = 34;
+            this.CNPJBusca.TabIndex = 13;
             this.CNPJBusca.TabStop = true;
             this.CNPJBusca.Text = "Jurídica (CNPJ)";
             this.CNPJBusca.UseVisualStyleBackColor = false;
@@ -360,7 +309,7 @@
             this.CPFBusca.Location = new System.Drawing.Point(358, 111);
             this.CPFBusca.Name = "CPFBusca";
             this.CPFBusca.Size = new System.Drawing.Size(104, 19);
-            this.CPFBusca.TabIndex = 33;
+            this.CPFBusca.TabIndex = 12;
             this.CPFBusca.TabStop = true;
             this.CPFBusca.Text = "Física (CPF)";
             this.CPFBusca.UseVisualStyleBackColor = false;
@@ -372,10 +321,13 @@
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Location = new System.Drawing.Point(358, 176);
+            this.dataGrid.MultiSelect = false;
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(302, 317);
+            this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGrid.Size = new System.Drawing.Size(302, 224);
             this.dataGrid.TabIndex = 36;
+            this.dataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellDoubleClick);
             // 
             // limparButton
             // 
@@ -385,10 +337,10 @@
             this.limparButton.Location = new System.Drawing.Point(588, 127);
             this.limparButton.Name = "limparButton";
             this.limparButton.Size = new System.Drawing.Size(72, 22);
-            this.limparButton.TabIndex = 37;
+            this.limparButton.TabIndex = 17;
             this.limparButton.Text = "LIMPAR";
             this.limparButton.UseVisualStyleBackColor = false;
-            this.limparButton.Click += new System.EventHandler(this.limparButton_Click);
+            this.limparButton.Click += new System.EventHandler(this.LimparButton_Click);
             // 
             // nomeBusca
             // 
@@ -399,23 +351,10 @@
             this.nomeBusca.Location = new System.Drawing.Point(358, 144);
             this.nomeBusca.Name = "nomeBusca";
             this.nomeBusca.Size = new System.Drawing.Size(62, 19);
-            this.nomeBusca.TabIndex = 38;
+            this.nomeBusca.TabIndex = 14;
             this.nomeBusca.TabStop = true;
             this.nomeBusca.Text = "Nome";
             this.nomeBusca.UseVisualStyleBackColor = false;
-            // 
-            // buscarCEP
-            // 
-            this.buscarCEP.BackColor = System.Drawing.Color.OliveDrab;
-            this.buscarCEP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buscarCEP.ForeColor = System.Drawing.Color.Azure;
-            this.buscarCEP.Location = new System.Drawing.Point(162, 324);
-            this.buscarCEP.Name = "buscarCEP";
-            this.buscarCEP.Size = new System.Drawing.Size(173, 22);
-            this.buscarCEP.TabIndex = 39;
-            this.buscarCEP.Text = "BUSCAR CEP";
-            this.buscarCEP.UseVisualStyleBackColor = false;
-            this.buscarCEP.Click += new System.EventHandler(this.buscarCEP_Click);
             // 
             // Close
             // 
@@ -425,19 +364,42 @@
             this.Close.Location = new System.Drawing.Point(617, 10);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(51, 23);
-            this.Close.TabIndex = 40;
+            this.Close.TabIndex = 18;
             this.Close.Text = "SAIR";
             this.Close.UseVisualStyleBackColor = false;
             this.Close.Click += new System.EventHandler(this.Close_Click);
+            // 
+            // btnViewLocal
+            // 
+            this.btnViewLocal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewLocal.BackgroundImage")));
+            this.btnViewLocal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnViewLocal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnViewLocal.Location = new System.Drawing.Point(291, 320);
+            this.btnViewLocal.Name = "btnViewLocal";
+            this.btnViewLocal.Size = new System.Drawing.Size(32, 28);
+            this.btnViewLocal.TabIndex = 9;
+            this.btnViewLocal.UseVisualStyleBackColor = true;
+            this.btnViewLocal.Click += new System.EventHandler(this.btnViewLocal_Click);
+            // 
+            // ImagemLogin
+            // 
+            this.ImagemLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ImagemLogin.Image = global::Desafio_Group.Properties.Resources.group;
+            this.ImagemLogin.Location = new System.Drawing.Point(12, 40);
+            this.ImagemLogin.Name = "ImagemLogin";
+            this.ImagemLogin.Size = new System.Drawing.Size(656, 37);
+            this.ImagemLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImagemLogin.TabIndex = 21;
+            this.ImagemLogin.TabStop = false;
             // 
             // CadastroForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(680, 515);
+            this.ClientSize = new System.Drawing.Size(680, 426);
+            this.Controls.Add(this.btnViewLocal);
             this.Controls.Add(this.Close);
-            this.Controls.Add(this.buscarCEP);
             this.Controls.Add(this.nomeBusca);
             this.Controls.Add(this.limparButton);
             this.Controls.Add(this.dataGrid);
@@ -447,21 +409,18 @@
             this.Controls.Add(this.buscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.telefoneTxt);
-            this.Controls.Add(this.CEPMasked);
             this.Controls.Add(this.documentTxt);
-            this.Controls.Add(this.alterarButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.cadastrarButton);
             this.Controls.Add(this.ImagemLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.enderecoTxt);
-            this.Controls.Add(this.EnderecoLabel);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.emailTxt);
             this.Controls.Add(this.TelefoneLabel);
             this.Controls.Add(this.TipoCNPJ);
             this.Controls.Add(this.TipoCPF);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tpDocument);
             this.Controls.Add(this.DocumentoLabel);
             this.Controls.Add(this.NomeLabel);
             this.Controls.Add(this.nomeTxt);
@@ -471,9 +430,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro";
             this.Load += new System.EventHandler(this.Cadastro_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagemLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaCadastroBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,22 +443,19 @@
         private System.Windows.Forms.Label DocumentoLabel;
         private System.Windows.Forms.Label NomeLabel;
         private System.Windows.Forms.TextBox nomeTxt;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label tpDocument;
         private System.Windows.Forms.RadioButton TipoCPF;
         private System.Windows.Forms.RadioButton TipoCNPJ;
         private System.Windows.Forms.Label TelefoneLabel;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.TextBox emailTxt;
-        private System.Windows.Forms.Label EnderecoLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox enderecoTxt;
         private System.Windows.Forms.PictureBox ImagemLogin;
         private System.Windows.Forms.Button cadastrarButton;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button alterarButton;
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private System.Windows.Forms.MaskedTextBox documentTxt;
-        private System.Windows.Forms.MaskedTextBox CEPMasked;
         private System.Windows.Forms.MaskedTextBox telefoneTxt;
         private System.Windows.Forms.BindingSource tabelaCadastroBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
@@ -515,7 +471,7 @@
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.Button limparButton;
         private System.Windows.Forms.RadioButton nomeBusca;
-        private System.Windows.Forms.Button buscarCEP;
         private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.Button btnViewLocal;
     }
 }

@@ -1,27 +1,26 @@
 ﻿using Desafio_Group.Forms;
 using Desafio_Group.Validacoes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desafio_Group
 {
     public partial class LoginForm : Form
     {
-        private Validacao Validar { get; set; }
+        #region PROPRIEDADES
         public CadastroForm Cadastro  { get; set; }
+
+        #endregion
+
+        #region CONSTRUTORES
         public LoginForm()
         {
             InitializeComponent();
-            Validar = new Validacao();
             Cadastro = new CadastroForm();
         }
+        #endregion
+
+        #region MÉTODOS
 
         private void ShowPass_CheckedChanged(object sender, EventArgs e)
         {
@@ -37,7 +36,7 @@ namespace Desafio_Group
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (Validar.verificarLogin(usuarioTxt.Text.ToString(), senhaTxt.Text.ToString()))
+            if (Validacao.verificarLogin(usuarioTxt.Text.ToString(), senhaTxt.Text.ToString()))
             {
                 Cadastro.Show();
                 this.Hide();
@@ -54,5 +53,7 @@ namespace Desafio_Group
         {
             Application.Exit();
         }
+
+        #endregion
     }
 }

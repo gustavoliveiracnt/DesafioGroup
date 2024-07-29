@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Desafio_Group.Funcionalidades
 {
     public class Hash
     {
+        #region ATRIBUTOS
         private HashAlgorithm _algoritmo;
+        #endregion
 
+        #region CONSTRUTORES
         public Hash(HashAlgorithm algoritmo)
         {
             _algoritmo = algoritmo;
         }
+        #endregion
 
+        #region MÉTODOS
         public string Criptografar(string senha)
         {
             using (_algoritmo)
@@ -32,5 +33,6 @@ namespace Desafio_Group.Funcionalidades
                 return builder.ToString();
             }
         }
+        #endregion
     }
 }

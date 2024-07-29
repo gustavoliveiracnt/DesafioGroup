@@ -1,22 +1,18 @@
 ﻿using Desafio_Group.Funcionalidades;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desafio_Group.Validacoes
 {
-    internal class Validacao
+    public static class Validacao
     {
-        private BancoDados dbvalidar { get; set; }
-        public Validacao()
-        {
-            dbvalidar = new BancoDados();
-        }
-        public bool validarEmail(string email)
+        #region ATRIBUTOS
+        private static BancoDados dbvalidar = new BancoDados();
+        #endregion
+
+        #region MÉTODOS
+        public static bool validarEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
@@ -35,13 +31,13 @@ namespace Desafio_Group.Validacoes
             }
         }
 
-        public bool validarCEP(string cep)
+        public static bool validarCEP(string cep)
         {
             var regex = new Regex(@"^\d{8}");
             return regex.IsMatch(cep);
         }
 
-        public bool validarCNPJ(string cnpj)
+        public static bool validarCNPJ(string cnpj)
         {
             int[] multip1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multip2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -92,7 +88,7 @@ namespace Desafio_Group.Validacoes
             }
         }
 
-        public bool validarCPF(string cpf)
+        public static bool validarCPF(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -136,9 +132,10 @@ namespace Desafio_Group.Validacoes
             return cpf.EndsWith(digito);
         }
 
-        public bool verificarLogin(string login, string senha)
+        public static bool verificarLogin(string login, string senha)
         {
             return dbvalidar.VerificarLoginBanco(login, senha);
         }
+        #endregion
     }
 }
